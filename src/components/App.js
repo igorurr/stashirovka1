@@ -19,7 +19,9 @@ class App extends Component {
         this.filtrate = this.filtrate.bind(this);
         this.search = this.search.bind(this);
         this.addElement = this.addElement.bind(this);
+
         this.elementComplete = this.elementComplete.bind(this);
+        this.elementDelete = this.elementDelete.bind(this);
     }
 
     filtrate( dateStart, dateEnd, status ) {
@@ -60,6 +62,12 @@ class App extends Component {
         this.updateElements([ ...this.state.elements.slice(0, elemPos), elem, ...this.state.elements.slice(elemPos+1) ]);
     }
 
+    elementDelete( id ) {
+        let elemPos = this.state.elements.findIndex( el => el.id === id );
+        
+        this.updateElements([ ...this.state.elements.slice(0, elemPos), ...this.state.elements.slice(elemPos+1) ]);
+    }
+
     updateElements( elements ){
         this.setState({
             elements: elements,
@@ -71,7 +79,11 @@ class App extends Component {
         return (
             <div className="App">
                 <Header addElement={this.addElement} search={this.search} filtrate={this.filtrate} />
-                <List elements={this.state.visibleElements} elementComplete={this.elementComplete} />
+                <List
+                    elements={this.state.visibleElements}
+                    elementComplete={this.elementComplete}
+                    elementDelete={this.elementDelete}
+                />
             </div>
         );
     }

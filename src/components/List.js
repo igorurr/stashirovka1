@@ -14,6 +14,7 @@ class List extends Component {
                                 text={el.text}
                                 isComplete={el.isComplete}
                                 doComplete={()=>this.props.elementComplete(el.id)}
+                                delete={()=>this.props.elementDelete(el.id)}
                           />
                 )}
                 {/*<Element date={"21.07.9486"} title={"dfst45sf"} text={"hui"} doComplete={()=>console.log("3")} />*/}

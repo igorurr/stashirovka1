@@ -5,6 +5,7 @@ class Element extends Component {
         super(props);
 
         this.doComplete = this.props.doComplete.bind(this);
+        this.delete = this.props.delete.bind(this);
     }
 
     render() {
@@ -18,6 +19,7 @@ class Element extends Component {
                 <footer>
                     {this.props.isComplete ? <p>Выполнено</p> : <p>Не выполнено</p>}
                     {!this.props.isComplete ? <button onClick={this.doComplete}>Выполнить</button> : <p></p>}
+                    <button onClick={this.delete}>X</button>
                 </footer>
             </article>
         );
